@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is a Secure Area</h1>
+    <h1 @click="globalHelper">This is a Secure Area</h1>
     <BootstrapVueDatatable :items ='posts'> </BootstrapVueDatatable>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
 
 import BootstrapVueDatatable from './BootstrapVueDatatable'
-
+import productmixin from '../mixins/productmixin'
 
 export default {
   name: 'Secure',
@@ -31,7 +31,8 @@ export default {
   },
   components: {
     BootstrapVueDatatable
-  }
+  },
+  mixins: [productmixin]
 }
 </script>
 
