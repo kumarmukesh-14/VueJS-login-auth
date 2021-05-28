@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1 @click="globalHelper">This is a Secure Area</h1>
+    
+    <Breadcrumb class="row justify-content-center mt-4" :crumbs="crumbs" @selected="selected"></Breadcrumb>
+
     <BootstrapVueDatatable :items ='posts'> </BootstrapVueDatatable>
   </div>
 </template>
@@ -9,10 +12,10 @@
 
 import BootstrapVueDatatable from './BootstrapVueDatatable'
 import productmixin from '../mixins/productmixin'
-
+import Breadcrumb from '../components/Breadcrumb.vue'
 export default {
   name: 'Secure',
-  data: () =>{
+  data() {
     return {
       posts: [{
         id:1,
@@ -26,13 +29,20 @@ export default {
         id:3,
         name:'Mac',
         profile:'manager'
-      }]
+      }],
+      crumbs: ['Home', 'Categoory', 'Sub Category']
     }
   },
   components: {
-    BootstrapVueDatatable
+    BootstrapVueDatatable,
+    Breadcrumb
   },
-  mixins: [productmixin]
+  mixins: [productmixin],
+  methods: {
+    selected(crumb) {
+      console.log(crumb)
+    }
+  }
 }
 </script>
 
